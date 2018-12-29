@@ -27,8 +27,11 @@ if __name__ == '__main__':
 
     for root, dirs, files in os.walk(dataset_dir):
         for sDir in dirs:
+            # glob 可以用通配符过滤文件
+            # 返回的是完整文件路径
             imgs_list = glob.glob(os.path.join(root, sDir)+'/*.png')
             random.seed(666)
+            # 随机打乱文件
             random.shuffle(imgs_list)
             imgs_num = len(imgs_list)
 
@@ -44,6 +47,7 @@ if __name__ == '__main__':
                     out_dir = test_dir + sDir + '/'
 
                 makedir(out_dir)
+                # 只取最后的文件名
                 out_path = out_dir + os.path.split(imgs_list[i])[-1]
                 shutil.copy(imgs_list[i], out_path)
 

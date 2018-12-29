@@ -133,3 +133,9 @@ dmypy.json
 .pyre/
 cifar-10-batches-py/
 .idea/
+cifar-10-png/
+test/
+train.txt
+train/
+valid.txt
+valid/

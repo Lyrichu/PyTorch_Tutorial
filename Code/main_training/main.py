@@ -40,11 +40,14 @@ writer = SummaryWriter(log_dir=log_dir)
 # ------------------------------------ step 1/5 : 加载数据------------------------------------
 
 # 数据预处理设置
+# 以下数据是使用实际的数据计算得到的,所有sample 各个 channel 像素值的均值和标准差
 normMean = [0.4948052, 0.48568845, 0.44682974]
 normStd = [0.24580306, 0.24236229, 0.2603115]
+# 构建一个transform
 normTransform = transforms.Normalize(normMean, normStd)
 trainTransform = transforms.Compose([
     transforms.Resize(32),
+    # 四周填充4 pixels,再随机裁剪
     transforms.RandomCrop(32, padding=4),
     transforms.ToTensor(),
     normTransform
